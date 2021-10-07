@@ -41,16 +41,16 @@ public class ProductService {
 	}
 	
 	public Product update(Product product) {
-		Product newProduct = findById(product.getId());
-		updateData(newProduct, product);
+		product.setId(product.getId());
+		product =repository.save(product);
 		
-		return repository.save(newProduct);
+		return repository.save(product);
 	}
 	
-	private void updateData(Product newProduct, Product product) {
-		newProduct.setName(product.getName());
-		newProduct.setPrice(product.getPrice());
-		newProduct.setDescription(product.getDescription());
-			
-	}
+//	private void updateData(Product newProduct, Product product) {
+//		newProduct.setName(product.getName());
+//		newProduct.setPrice(product.getPrice());
+//		newProduct.setDescription(product.getDescription());
+//
+//	}
 }
